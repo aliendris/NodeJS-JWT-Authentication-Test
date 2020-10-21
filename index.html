@@ -50,8 +50,10 @@
                const token = res.data.token;
                localStorage.setItem('jwt', token);
                getDashboard();
+               history.pushState(null, null, 'login');
            }
         });
+       
     }
 
     function getDashboard() {
@@ -64,8 +66,10 @@
                 if (res && res.data && res.data.success) {
                     document.querySelector('h1.row').innerHTML = 'Dashboard';
                     document.querySelector('main').innerHTML = res.data.myContent;
+                    history.pushState(null, null, 'dashboard');
                 }
             });
+           
         }
 
         function getSettings() {
@@ -78,12 +82,11 @@
                 if (res && res.data && res.data.success) {
                     document.querySelector('h1.row').innerHTML = 'Settings';
                     document.querySelector('main').innerHTML = res.data.myContent;
+                    history.pushState(null, null, 'settings');
                 }
             });
+           
         }
-
-
-
 
 </script>
 </body>
